@@ -154,7 +154,8 @@ public class SalesRank {
 	 * How much data will the ranking system hold? In the worst case, all 20
 	 * million products are part of the overall ranking, but now each entry has
 	 * 8 columns of 4 bytes each (plus the 8 bytes key), so the overall ranking
-	 * uses about 800 MB of space. Note that this is just for the overall
+	 * uses about 800 MB of space (that is, 4 byte * 8 + 8 byte = 40 byte per entry,
+	 * 40 byte * 20 million = 800 MB). Note that this is just for the overall
 	 * ranking, we didn't count categories in here.
 	 * 
 	 * Once we sort the global category and every other category, we write the
