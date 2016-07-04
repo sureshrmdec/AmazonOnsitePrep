@@ -115,12 +115,12 @@ public class SalesRank {
 	 * 
 	 * Here's the typical flow:
 	 * 
-	 * A new purchase occurs The new purchase information (product ID) is sent
-	 * to the logging system The logging system increments the count of
-	 * purchases seen for that product Eventually, the ranking system will fetch
+	 * A new purchase occurs. The new purchase information (product ID) is sent
+	 * to the logging system. The logging system increments the count of
+	 * purchases seen for that product. Eventually, the ranking system will fetch
 	 * this updated information from the logging system When new information is
 	 * fetched by the ranking system, the logging system is cleared, because we
-	 * won't fetch it again. So the logging system acts as a temporary buffer
+	 * won't fetch it again. So the logging system acts as a temporary buffer.
 	 * The ranking system, in turn, merges this new information into the
 	 * database and sorts everything. Also, it purges data that is older than
 	 * one week Let's assume a product ID is 8 bytes long, and the associated
