@@ -20,12 +20,9 @@ public class WebCrawler {
 	static Set<String> marked = new HashSet<>();
 
 	// URL Pattern regex
-	static String regex = "http[s]*://(\\w+\\.)*(\\w+)";// http or https, then
-														// ://, then one or more
-														// letters, followed by
-														// a dot, then repeat
-														// zero or more, then
-														// one or more letters
+	static String regex = "http[s]*://(\\w+\\.)*(\\w+)";// http or https, then ://, then one or more
+							// letters, followed by a dot, then repeat zero or more, 
+							// then one or more letters
 
 	// Start from here
 	static String root = "http://www.codebytes.in";
