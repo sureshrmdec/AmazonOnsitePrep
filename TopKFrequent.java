@@ -1,6 +1,50 @@
 package leetcode;
 
 public class TopKFrequent {
+/*
+Given a non-empty array of integers, return the k most frequent elements.
+
+For example,
+Given [1,1,1,2,2,3] and k = 2, return [1,2].
+
+Note: 
+You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+*/
+
+/*
+PriorityQueue provides O(log(n)) time for the enqueing and dequeing methods (offer, poll, remove() and  add); linear time for the remove(Object) and contains(Object) methods; and constant time for the retrieval methods (peek,  element, and size).
+*/
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        // Priority Queue's size is k, hence the run time for this case is just O(lgK).
+        PriorityQueue<Map.Entry<Integer, Integer>> kFrequent = new PriorityQueue<Map.Entry<Integer, Integer>>(k,
+            new Comparator<Map.Entry<Integer, Integer>>() {
+                public int compare(Map.Entry<Integer, Integer> left, Map.Entry<Integer, Integer>right){
+                    return right.getValue().compareTo(left.getValue());
+                }
+            });
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int num : nums){
+            if(!map.containsKey(num)){
+                map.put(num, 0);
+            }else{
+                map.put(num, map.get(num) + 1);
+            }
+            //map.putIfAbsent(num, 0);
+            //map.computeIfPresent(num, (key, oldVal) -> oldVal + 1);
+        }
+        //use priority queue to find kFrequent
+        for(Map.Entry<Integer, Integer> mapEntry : map.entrySet()){
+            kFrequent.offer(mapEntry);
+        }
+        List<Integer> returnList = new ArrayList<>();
+        for(int i = 0; i < k; i++){
+            // in practice, we need check operation is null or not
+            //System.out.println(kFrequent.poll());
+            returnList.add(kFrequent.poll().getKey());
+        }
+        return returnList;
+    }
 
 }
 
