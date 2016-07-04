@@ -13,7 +13,9 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
 */
 
 /*
-PriorityQueue provides O(log(n)) time for the enqueing and dequeing methods (offer, poll, remove() and  add); linear time for the remove(Object) and contains(Object) methods; and constant time for the retrieval methods (peek,  element, and size).
+PriorityQueue provides O(log(n)) time for the enqueing and dequeing methods (offer, poll, remove() and  add); 
+linear time for the remove(Object) and contains(Object) methods; 
+and constant time for the retrieval methods (peek,  element, and size).
 */
     public List<Integer> topKFrequent(int[] nums, int k) {
         // Priority Queue's size is k, hence the run time for this case is just O(lgK).
