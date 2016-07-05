@@ -26,10 +26,10 @@ public class RomanInteger {
 		int n = s.length();
 		int sum = m.get(c[n - 1]);
 		for (int i = n - 2; i >= 0; i--) {
-			if (m.get(c[i + 1]) <= m.get(c[i])) {// µ±Ç°Êı×Ö±ÈºóÃæÊı×Ö´ó£¬¼ÓÉÏ
+			if (m.get(c[i + 1]) <= m.get(c[i])) {// å½“å‰æ•°å­—æ¯”åé¢æ•°å­—å¤§ï¼ŒåŠ ä¸Š
 				sum = sum + m.get(c[i]);
 			} else {
-				sum = sum - m.get(c[i]);// µ±Ç°Êı×Ö±ÈºóÃæÊı×ÖĞ¡£¬¼õÈ¥
+				sum = sum - m.get(c[i]);// å½“å‰æ•°å­—æ¯”åé¢æ•°å­—å°ï¼Œå‡å»
 			}
 		}
 		return sum;
@@ -45,8 +45,8 @@ public class RomanInteger {
 		int[] nums = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
 
 		/*
-		 * 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 "M", "CM", "D",
-		 * "CD", "C", "XC", "L", "XL", "X" IX V, IV, I
+		 * 1000, 900, 500, 400,  100,  90,   50,  40,  10, 9, 5,  4, 1 
+		 * "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X" IX V, IV, I
 		 */
 		String[] strs = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
