@@ -22,10 +22,12 @@ public class FindMedian {
 	 * add(1) add(2) findMedian() -> 1.5 add(3) findMedian() -> 2
 	 */
 
-	// Ê±¼ä O(NlogN) ¿Õ¼ä O(N)
-	PriorityQueue<Integer> max = new PriorityQueue<Integer>();// this is a min heap, but it stores the large half (the top is the minimum of the heap)
-	PriorityQueue<Integer> min = new PriorityQueue<Integer>(Collections.reverseOrder());// this is a max heap, but it stores the small half (top is the maximum of the heap)
-	// ÕâÑùÖĞÎ»ÊıÖ»ÓĞ¿ÉÄÜÊÇ¶Ñ¶¥»òÕß¶Ñ¶¥Á½¸öÊıµÄ¾ùÖµ.ĞÂÊı¼ÓÈë¶Ñºó£¬Òª±£Ö¤Á½¸ö¶ÑµÄ´óĞ¡Ö®²î²»³¬¹ı1.
+	// æ—¶é—´ O(NlogN) ç©ºé—´ O(N)
+	// this is a min heap, but it stores the large half (the top is the minimum of the heap)
+	PriorityQueue<Integer> max = new PriorityQueue<Integer>();
+	// this is a max heap, but it stores the small half (top is the maximum of the heap)
+	PriorityQueue<Integer> min = new PriorityQueue<Integer>(Collections.reverseOrder());
+	// è¿™æ ·ä¸­ä½æ•°åªæœ‰å¯èƒ½æ˜¯å †é¡¶æˆ–è€…å †é¡¶ä¸¤ä¸ªæ•°çš„å‡å€¼.æ–°æ•°åŠ å…¥å †åï¼Œè¦ä¿è¯ä¸¤ä¸ªå †çš„å¤§å°ä¹‹å·®ä¸è¶…è¿‡1.
 	// Adds a number into the data structure.
 
 	public void addNum(int num) {
