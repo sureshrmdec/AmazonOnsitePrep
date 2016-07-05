@@ -56,6 +56,7 @@ public class GraphImp {
 		boolean visited[] = new boolean[vertices];
 		visited[s] = true;
 		ArrayList<Integer> q = new ArrayList<Integer>();
+		q.add(s);
 		while (!q.isEmpty()) {
 			int next = q.remove(0);
 			System.out.println("Visited " + next + "node");
