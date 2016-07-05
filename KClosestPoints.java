@@ -9,6 +9,8 @@ public class KClosestPoints {
 
 	// heap
 	public List<Point> findKClosest(Point[] p, int k) {
+		// this is a max heap. or we can use a min heap (need to specify the comparator as well),
+		// then offer all points into it, but only the first k points are the result
 		PriorityQueue<Point> pq = new PriorityQueue<>(k, new Comparator<Point>() {
 			@Override
 			public int compare(Point a, Point b) {
