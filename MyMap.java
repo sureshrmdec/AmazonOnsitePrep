@@ -71,10 +71,10 @@ class HashMapCustom<K, V> {
                if(current.key.equals(newKey)){        
                    if(previous==null){  //node has to be insert on first of bucket.
                        newEntry.next=current.next;
-                       table[hash]=newEntry;// update existing value
+                       table[hash]=newEntry;// insert into it if absent
                        return;
                    }else{
-                       newEntry.next=current.next;
+                       newEntry.next=current.next;// update existing value
                        previous.next=newEntry;
                        return;
                    }
