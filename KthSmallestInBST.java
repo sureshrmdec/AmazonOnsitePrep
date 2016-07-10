@@ -5,7 +5,7 @@ public class KthSmallestInBST {
 	 * Given a binary search tree, write a function kthSmallest to find the kth
 	 * smallest element in it.
 	 * 
-	 * Note: You may assume k is always valid, 1 ¡Ü k ¡Ü BST's total elements.
+	 * Note: You may assume k is always valid, 1 Â¡Ãœ k Â¡Ãœ BST's total elements.
 	 */
 
 	// To make it O(height of BST), just add property size to BST node.
@@ -19,6 +19,28 @@ public class KthSmallestInBST {
 	 * At most we search height of BST times, so
 	 * it's O(height of BST).
 	 */
+public int kthSmallestInorder(TreeNode root, int k) {//O(n)
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+ 
+    TreeNode p = root;
+    int result = 0;
+ 
+    while(!stack.isEmpty() || p!=null){
+        if(p!=null){
+            stack.push(p);
+            p = p.left;
+        }else{
+            TreeNode t = stack.pop();
+            k--;
+            if(k==0)
+                result = t.val;
+            p = t.right;
+        }
+    }
+ 
+    return result;
+}
+	 
 	public int kthSmallest(TreeNode root, int k) {
 		int count = countNodes(root.left);
 		if (k <= count) {
