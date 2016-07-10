@@ -68,22 +68,21 @@ class HashMapCustom<K, V> {
            Entry<K,V> current = table[hash];
            
            while(current != null){ //we have reached last entry of bucket.
-           if(current.key.equals(newKey)){           
-               if(previous==null){  //node has to be insert on first of bucket.
-                     newEntry.next=current.next;
-                     table[hash]=newEntry;
-                     return;
+               if(current.key.equals(newKey)){        
+                   if(previous==null){  //node has to be insert on first of bucket.
+                       newEntry.next=current.next;
+                       table[hash]=newEntry;// update existing value
+                       return;
+                   }else{
+                       newEntry.next=current.next;
+                       previous.next=newEntry;
+                       return;
+                   }
                }
-               else{
-                   newEntry.next=current.next;
-                   previous.next=newEntry;
-                   return;
-               }
+               previous=current;
+               current = current.next;
            }
-           previous=current;
-             current = current.next;
-         }
-         previous.next = newEntry;
+           previous.next = newEntry;
         }
     }
  
@@ -133,8 +132,8 @@ class HashMapCustom<K, V> {
                }
            }
            previous=current;
-             current = current.next;
-          }
+           current = current.next;
+        }
         return false;
       }
     
