@@ -1,0 +1,106 @@
+package leetcode;
+
+import java.util.ArrayList;
+
+public class MergeContacts {
+	public static void main(String[] args) {
+		// name -> emails
+		ArrayList<String> e1 = new ArrayList<String>();
+		e1.add("aaa@gmail.com");
+		e1.add("bbb@gmail.com");
+		Contact c1 = new Contact("c1", e1);
+		ArrayList<String> e2 = new ArrayList<String>();
+		e2.add("bbb@gmail.com");
+		Contact c2 = new Contact("c2", e2);
+		ArrayList<String> e3 = new ArrayList<String>();
+		e3.add("aaa@gmail.com");
+		Contact c3 = new Contact("c3", e3);
+		ArrayList<String> e4 = new ArrayList<String>();
+		e4.add("ddd@gmail.com");
+		Contact c4 = new Contact("c4", e4);
+		ArrayList<String> e5 = new ArrayList<String>();
+		e5.add("ccc@gmail.com");
+		e5.add("ddd@gmail.com");
+		Contact c5 = new Contact("c5", e5);
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
+		contacts.add(c1);
+		contacts.add(c2);
+		contacts.add(c3);
+		contacts.add(c4);
+		contacts.add(c5);
+		ArrayList<ArrayList<Contact>> ret = mergeContacts(contacts);
+		for (ArrayList<Contact> cur : ret) {
+			for (Contact con : cur) {
+				System.out.print(con.getName());
+			}
+			System.out.println();
+		}
+	}
+
+	private static ArrayList<ArrayList<Contact>> mergeContacts(ArrayList<Contact> contacts) {
+		ArrayList<ArrayList<Contact>> ret = new ArrayList<ArrayList<Contact>>();
+		ArrayList<Contact> cur = new ArrayList<Contact>();
+		for (Contact contact : contacts) {
+			if (ret.isEmpty()) {
+				cur.add(contact);
+				ret.add(cur);
+				continue;
+			}
+			for (int i = 0; i < ret.size(); i++) {
+				ArrayList<Contact> temp = ret.get(i);
+				for (int j = 0; j < temp.size(); j++) {
+					Contact contactTemp = temp.get(j);
+					if (emailOverlap(contactTemp.getEmail(), contact.getEmail())) {
+						ArrayList<Contact> tempClone = new ArrayList<Contact>();
+						tempClone.add(contact);
+						tempClone.addAll(temp);
+						ret.set(i, tempClone);
+					} else {
+						if (j == temp.size() - 1 && i == ret.size() - 1) {// create new group after all existing are compared
+							ArrayList<Contact> newName = new ArrayList<Contact>();
+							newName.add(contact);
+							ret.add(newName);
+							i++;
+						}
+					}
+				}
+			}
+		}
+		return ret;
+	}
+
+	private static boolean emailOverlap(ArrayList<String> e1, ArrayList<String> e2) {
+		for (String s1 : e1) {
+			for (String s2 : e2) {
+				if (s1.equals(s2)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private static class Contact implements Comparable<Contact> {
+		private String name;
+		private ArrayList<String> email;
+
+		public Contact(String name, ArrayList<String> email) {
+			this.name = name;
+			this.email = email;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public ArrayList<String> getEmail() {
+			return email;
+		}
+
+		@Override
+		public int compareTo(Contact o) {
+			// TODO Auto-generated method stub
+			return this.email.size() - o.getEmail().size();
+		}
+	}
+}
