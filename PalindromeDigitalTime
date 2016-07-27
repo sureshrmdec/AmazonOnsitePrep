@@ -1,0 +1,25 @@
+public class PalindromeDigitalTime {
+	private static void getPalindrome() {
+		for (int i = 0; i < 24; i++) {
+			String hour = String.valueOf(i);
+			if (i < 10) {
+				hour = "0" + hour;
+			}
+			String hour1 = new StringBuilder(hour).reverse().toString();
+			// System.out.println("hour: " + hour);
+			for (int j = 0; j < 60; j++) {
+				if ((j % 10) < 6) {
+					String minute = String.valueOf(j);
+					if (j < 10) {
+						minute = "0" + minute;
+					}
+					// System.out.println("minute: " + minute);
+					if (hour1.equals(minute)) {
+						System.out.println("" + hour + ":" + minute);
+					}
+				}
+			}
+		}
+	}
+
+}
